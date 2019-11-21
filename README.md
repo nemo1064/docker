@@ -11,7 +11,9 @@ Dockerising a simple REST-API which counts the number of visitors and performs s
 ```
 Goto the Docker directory
 
-Run the Following Commands:
+Goto db_api or counting_api directory 
+
+Run the following commands:
 
 sudo docker-compose build
 sudo docker-compose up
