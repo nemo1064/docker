@@ -10,9 +10,12 @@ client = MongoClient("mongodb://db:27017")
 db = client.SentencesDatabase
 user= db["user"]
 
+
+#User Registrations
 class Register(Resource):
     def post(self):
 
+    # Reading the data recieved via POST
         pdata=request.get_json()
 
         username = pdata["username"]
@@ -21,6 +24,7 @@ class Register(Resource):
         salt = bcrypt.gensalt()
         hashed_pwd=bcrypt.hashpw(password.encode("utf8"), salt)
 
+    # Insert User details
         user.insert_one({
             'Username':username,
             'Password':hashed_pwd,
@@ -36,7 +40,7 @@ class Register(Resource):
         return jsonify(retjson)
 
 
-
+# Func to validate user
 def validateUser(username , password):
     hashed_pw=user.find({
         "Username":username
@@ -47,12 +51,14 @@ def validateUser(username , password):
     else:
         return False
 
+#Func to keep count of Tokens
 def countTokens(username):
     tokens=user.find({
         "Username":username
         })[0]["Tokens"]
     return tokens
 
+#Storing Sentences
 class Store(Resource):
     def post(self):
         pdata=request.get_json()
@@ -96,6 +102,7 @@ class Store(Resource):
 
         return jsonify(retjson)
 
+# Get the sentence
 class Get(Resource):
     def post(self):
     
@@ -141,6 +148,7 @@ class Get(Resource):
         }
         return jsonify(retjson)
 
+#Adding Tokens 
 class AddToken(Resource):
     def post(self):
 
