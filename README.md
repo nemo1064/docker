@@ -5,7 +5,9 @@ Docker is a tool designed to make it easier to create, deploy, and run applicati
 ## Description
 
 Dockerising two simple REST-APIs -
-    1. Counts the number of visitors and performs simple operations suchs as "Addition","Subtraction", "Multiplication" and "Division" on two numbers received via POST method.
+
+    1.Counts the number of visitors and performs simple operations   
+      suchs as "Addition","Subtraction", "Multiplication" and "Division" on two numbers received via POST method.
 
     2.Provides database as a service to store sentences.
       Supports-
